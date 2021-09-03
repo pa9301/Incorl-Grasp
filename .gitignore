@@ -1,0 +1,16 @@
+## Models
+
+GAN/checkpoints
+D4PG/checkpoint
+arm_segmentation/checkpoints
+VAEs/checkpoints
+object_detection/checkpoint
+
+
+## IDE
+.idea
+
+
+## Mac
+
+**/.DS_Store
