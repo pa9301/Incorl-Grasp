@@ -680,7 +680,7 @@ class ActorFactory:
     def start_distributed_actor(self):
         for i in range(self._num_actor):
             proc = Process(target=actor_process,
-                           args=(i, self.args_main, self._bActorProcRun, self._ActorEndProcCnt, self._scripted_iter,
+                           args=(self.args_main, self._bActorProcRun, self._ActorEndProcCnt, self._scripted_iter,
                                  self._replay_buffer, self._PreImgQueueList[i], self._ImgQueueList[i],
                                  self._LatentQueueList[i],
                                  self._PolicyQueueList[i], self._RewardQueueList[i],
