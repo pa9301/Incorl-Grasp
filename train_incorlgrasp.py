@@ -80,6 +80,7 @@ args = parser.parse_args()
 
 
 def main():
+    os.makedirs(args.offline_data_path + '/file', exist_ok=True)
     memory_factory = MemoryFactory(args.offline_data_path + '/file', args.online_memory_size)
 
     tf_config = tf.ConfigProto(allow_soft_placement=True)
@@ -93,20 +94,16 @@ def main():
     log_file_path = args.checkpoint_dir + "/log/log.txt"
     nb_grasp = 0
     training_step = 0
-    if os.path.exists(log_path):
-        if os.path.exists(log_file_path):
-            with open(log_file_path, 'r') as f:
-                log_dict = json.load(f)
-                nb_grasp = log_dict['nb_grasp']
-                training_step = log_dict['training_step']
-        else:
-            log_dict = {'nb_grasp': nb_grasp, 'training_step': training_step}
-            with open(log_file_path, 'w') as f:
-                f.write(json.dumps(log_dict))
+
+    os.makedirs(log_path, exist_ok=True)
+    if os.path.exists(log_file_path):
+        with open(log_file_path, 'r') as f:
+            log_dict = json.load(f)
+            nb_grasp = log_dict['nb_grasp']
+            training_step = log_dict['training_step']
     else:
-        log_dict = {'nb_grasp': nb_grasp, 'training_step': training_step}
-        os.mkdir(log_path)
         with open(log_file_path, 'w') as f:
+            log_dict = {'nb_grasp': nb_grasp, 'training_step': training_step}
             f.write(json.dumps(log_dict))
 
     nb_actions = args.ddpg_action_shape
