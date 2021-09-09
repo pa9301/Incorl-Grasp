@@ -7,10 +7,10 @@ conda create -n incorl-grasp python=3.7.5
 conda activate incorl-grasp
 pip install -r requirements.txt
 ```
-Download models from {}, and locate them in proper directory.
+Also download models from [Google Drive](https://drive.google.com/file/d/1bWK-pOdbB5rOQwdzQMDZJbc3HikMqXIF/view), and locate them in proper location.
 
 ## Run
 ```shell
-python train_incorlgrasp.py
+python train_incorlgrasp.py [options...]
 ```
 
